@@ -75,7 +75,6 @@ export default function Aprovado() {
       {dados && <Confetti width={width} height={height} numberOfPieces={400} recycle={false} />}
 
       <div className="text-center max-w-md z-10">
-        <h1 className="text-5xl font-extrabold mb-6 animate-bounce">🎉 Parabéns!</h1>
 
         {erro ? (
           <p className="text-lg text-red-200">{erro}</p>
@@ -84,6 +83,8 @@ export default function Aprovado() {
         ) : (
           <>
             <p className="text-xl mb-4">
+                      <h1 className="text-5xl font-extrabold mb-6 animate-bounce">🎉 Parabéns!</h1>
+
               {dados.nome}, você conseguiu!{" "}
               <span className="font-bold text-yellow-300">
                 sua fatura pagando AGORA sai a 29,90
