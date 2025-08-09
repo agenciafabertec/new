@@ -86,7 +86,7 @@ export default function Aprovado() {
             <p className="text-xl mb-4">
               {dados.nome}, você conseguiu!{" "}
               <span className="font-bold text-yellow-300">
-                sua fatura pagando AGORA sai a 47,90
+                sua fatura pagando AGORA sai a 29,90
               </span>
             </p>
 
