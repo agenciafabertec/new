@@ -1,11 +1,12 @@
+// src/pages/VerificaCpf.tsx
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import centralIcon from "../assets/central.svg";
-import conectaLogo from "../assets/conecta-logo.svg"; // ✔️ novo import
+import conectaLogo from "../assets/conecta-logo.svg";
+import AprovadoInline from "../components/AprovadoInline";
 
 export default function VerificaCpf() {
   const [cpf, setCpf] = useState("");
-  const navigate = useNavigate();
+  const [cpfConfirmado, setCpfConfirmado] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,12 +14,11 @@ export default function VerificaCpf() {
       alert("Digite um CPF válido");
       return;
     }
-    navigate("/aprovado", { state: { cpf } });
+    setCpfConfirmado(cpf.trim());
   };
 
   return (
     <div className="min-h-screen bg-[#ff6a00] flex flex-col items-center justify-center font-montserrat px-4">
-      
       {/* ✅ LOGO NO TOPO */}
       <img
         src={conectaLogo}
@@ -43,8 +43,7 @@ export default function VerificaCpf() {
           {/* Tabs no topo */}
           <div className="flex text-center text-sm font-bold">
             <div className="w-1/3 text-white bg-[#ff6a00] py-3">MINHA CONECTA</div>
-            <div className="w-1/3 border border-[#ff6a00] text-[#ff6a00] py-3">E-MAIL</div>
-            <div className="w-1/3 border border-[#ff6a00] text-[#ff6a00] py-3">NUVEM PESSOAL</div>
+         
           </div>
 
           {/* Formulário */}
@@ -74,6 +73,13 @@ export default function VerificaCpf() {
           </div>
         </div>
       </div>
+
+      {/* 🔽 Resultado/Desconto abaixo do mesmo quadrado */}
+      {cpfConfirmado && (
+        <div className="w-full max-w-4xl mt-4">
+          <AprovadoInline cpf={cpfConfirmado} />
+        </div>
+      )}
     </div>
   );
 }
